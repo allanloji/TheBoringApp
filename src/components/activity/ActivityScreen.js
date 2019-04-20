@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {Dimensions, Text, View,} from 'react-native';
+import {StyleSheet, Text, View,} from 'react-native';
 import {Button} from "./common";
+import {Link, Redirect} from 'react-router-native'
 
-// The screen's width
-const {width, height} = Dimensions.get('window');
 
 const colors = [
     {
@@ -52,7 +51,7 @@ class ActivityScreen extends Component {
     constructor(props){
         super(props);
         this.state = {color:0 };
-        this.setRandomColor= this.setRandomColor.bind(this);
+        this.setRandomColor = this.setRandomColor.bind(this);
     }
 
     setRandomColor(){
@@ -63,9 +62,8 @@ class ActivityScreen extends Component {
         this.setState({
             color: color
         });
-
-
     }
+
 
     render(){
         const {view, activity} = styles;
@@ -82,12 +80,11 @@ class ActivityScreen extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     view: {
-        height: height - 100,
+        flex: 1,
         justifyContent: "center",
-        flexDirection: 'column',
-        borderRadius: 20,
+
 
     },
     activity: {
@@ -98,6 +95,6 @@ const styles = {
     },
 
 
-};
+});
 
 export default ActivityScreen;

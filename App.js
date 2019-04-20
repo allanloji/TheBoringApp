@@ -7,18 +7,14 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import { NativeRouter, Route, Link } from "react-router-native";
 import ActivityScreen from "./src/components/activity/ActivityScreen";
+import {ActivityDetail} from "./src/components/activity/ActivityDetail/ActivityDetail";
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-const Home = () => <Text style={styles.header}>Home</Text>;
+
+
 
 const About = () => <Text style={styles.header}>About</Text>;
 
@@ -34,9 +30,10 @@ export default class App extends Component<Props> {
           <View style={styles.container}>
 
 
-            <Route exact path="/" component={ActivityScreen} />
+            <Route exact path="/" component={ActivityDetail} />
             <Route path="/about" component={About} />
             <Route path="/topics" component={Topic} />
+            <Route path="/details" component={ActivityDetail} />
 
             <View style={styles.nav}>
               <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
@@ -58,7 +55,6 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
   },
   header: {
     fontSize: 20
