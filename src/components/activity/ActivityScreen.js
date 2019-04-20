@@ -1,51 +1,102 @@
 import React, { Component } from 'react';
-import {Dimensions, View, FlatList} from 'react-native';
+import {Dimensions, Text, View,} from 'react-native';
+import {Button} from "./common";
 
 // The screen's width
 const {width, height} = Dimensions.get('window');
 
+const colors = [
+    {
+        backgroundColor: "#EDF2F5",
+        color: "#D9827E"
+    },
+    {
+        backgroundColor: "#6FBCB7",
+        color: "#C0ED8A"
+    },
+    {
+        backgroundColor: "#F7DE87",
+        color: "#302B0D"
+    },
+    {
+        backgroundColor: "#FA5331",
+        color: "#FBE2EB"
+    },
+    {
+        backgroundColor: "#1A2B44",
+        color: "#FADA42"
+    },
+    {
+        backgroundColor: "#FFE5EE",
+        color: "#FE4F34"
+    },
+    {
+        backgroundColor: "#478BAC",
+        color: "#FF8C61"
+    },
+    {
+        backgroundColor: "#6DB5D0",
+        color: "#D86DCA"
+    },
+    {
+        backgroundColor: "#B89046",
+        color: "#2B6971"
+    },
+    {
+        backgroundColor: "#674389",
+        color: "#CA975B"
+    },
+];
+
 class ActivityScreen extends Component {
     constructor(props){
         super(props);
+        this.state = {color:0 };
+        this.setRandomColor= this.setRandomColor.bind(this);
+    }
+
+    setRandomColor(){
+        const color = Math.floor(Math.random() * 10);
+        if(color === this.state.color){
+            return this.setRandomColor();
+        }
+        this.setState({
+            color: color
+        });
+
+
     }
 
     render(){
-        const {viewStyle, containerStyle} = styles;
+        const {view, activity} = styles;
         return(
-            <View style={viewStyle}>
-                <View style={containerStyle}>
-                    <FlatList
-                        data={testCoupons}
-                        renderItem={({item, index}) => (
-                            <View>
-                                <BuyCard coupon={item} onDetail={this.props.onDetail}/>
-                            </View>
-                        )
-                        }
-                        showsVerticalScrollIndicator={false}
-                        ListFooterComponent={<View style={{ height: 0, marginBottom: 100 }}></View>}
-                    />
-
-                </View>
-
+            <View style={{...view, ...{"backgroundColor": colors[this.state.color].backgroundColor}}}>
+                <Text style={{...activity, ...{"color": colors[this.state.color].color}}}>
+                    The force is strong with this one.
+                </Text>
+                <Button color={colors[this.state.color].color} onPress={this.setRandomColor}/>
             </View>
+
+
         );
     }
 }
 
 const styles = {
-    viewStyle: {
-        backgroundColor: '#E7E7E7',
-        height,
-        marginTop: 20,
-        width
+    view: {
+        height: height - 100,
+        justifyContent: "center",
+        flexDirection: 'column',
+        borderRadius: 20,
+
     },
-    containerStyle: {
-        backgroundColor: '#E7E7E7',
-        height,
-        marginLeft: 10,
-        width: width -20,
+    activity: {
+        fontSize: 50,
+        fontWeight: "600",
+        padding: 20,
+        textAlignVertical: "center",
     },
+
 
 };
 
