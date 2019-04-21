@@ -1,15 +1,15 @@
 import React from 'react';
 import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
 
-function Price({price}) {
+function Price({price, color}) {
     return (
         <View>
-            {drawPrices(price)}
+            {drawPrices(price, color)}
         </View>
     );
 }
 
-function drawPrices(price){
+function drawPrices(price, color){
     const {container, text, emptyText} = styles;
 
      const symbolCont =Math.ceil(price * 5);
@@ -19,7 +19,6 @@ function drawPrices(price){
      let i = 0;
      while(i < 5){
          if(i < symbolCont){
-             console.log("Entra");
              priceText += "$";
          }else{
             emptyPrice += "$";
@@ -28,7 +27,7 @@ function drawPrices(price){
      }
     return(
       <View style={container}>
-          <Text style={text}>{priceText}</Text>
+          <Text style={{...text, ...{"color": color}}}>{priceText}</Text>
           <Text style={emptyText}>{emptyPrice}</Text>
       </View>
     );
@@ -40,17 +39,13 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     text:{
-        color: "#000",
         fontSize: 20,
         letterSpacing: 10,
-
-
     },
     emptyText: {
-        color: "grey",
+        color: "#fff",
         fontSize: 20,
         letterSpacing: 10,
-
     }
 });
 

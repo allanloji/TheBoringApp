@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View,} from 'react-native';
 import {Button} from "./common";
-import {Link, Redirect} from 'react-router-native'
+import SwipeGesture from '../../../scripts/swipe-gesture';
+import {NavBar} from "../common";
 
 
 const colors = [
@@ -52,6 +53,8 @@ class ActivityScreen extends Component {
         super(props);
         this.state = {color:0 };
         this.setRandomColor = this.setRandomColor.bind(this);
+        this.onSwipePerformed = this.onSwipePerformed.bind(this);
+        this.onDetailPressed = this.onDetailPressed.bind(this);
     }
 
     setRandomColor(){
@@ -62,6 +65,17 @@ class ActivityScreen extends Component {
         this.setState({
             color: color
         });
+
+    }
+
+    onSwipePerformed(action) {
+        if(action === "left"){
+            this.setRandomColor();
+        }
+    }
+
+    onDetailPressed(){
+        this.props.history.push("/details")
     }
 
 
@@ -69,10 +83,13 @@ class ActivityScreen extends Component {
         const {view, activity} = styles;
         return(
             <View style={{...view, ...{"backgroundColor": colors[this.state.color].backgroundColor}}}>
-                <Text style={{...activity, ...{"color": colors[this.state.color].color}}}>
-                    The force is strong with this one.
-                </Text>
-                <Button color={colors[this.state.color].color} onPress={this.setRandomColor}/>
+                <SwipeGesture gestureStyle={view} onSwipePerformed={this.onSwipePerformed}>
+                    <Text style={{...activity, ...{"color": colors[this.state.color].color}}}>
+                        The force is strong with this one.
+                    </Text>
+                    <Button color={colors[this.state.color].color} onPress={this.onDetailPressed}/>
+                </SwipeGesture>
+                <NavBar/>
             </View>
 
 
@@ -84,8 +101,6 @@ const styles = StyleSheet.create({
     view: {
         flex: 1,
         justifyContent: "center",
-
-
     },
     activity: {
         fontSize: 50,

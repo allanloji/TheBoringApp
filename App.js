@@ -27,26 +27,10 @@ export default class App extends Component<Props> {
   render() {
     return (
         <NativeRouter>
-          <View style={styles.container}>
-
-
-            <Route exact path="/" component={ActivityDetail} />
+            <Route exact path="/" component={ActivityScreen} />
             <Route path="/about" component={About} />
             <Route path="/topics" component={Topic} />
             <Route path="/details" component={ActivityDetail} />
-
-            <View style={styles.nav}>
-              <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
-                <Text>Home</Text>
-              </Link>
-              <Link to="/about" underlayColor="#f0f4f7" style={styles.navItem}>
-                <Text>About</Text>
-              </Link>
-              <Link to="/topics" underlayColor="#f0f4f7" style={styles.navItem}>
-                <Text>Topics</Text>
-              </Link>
-            </View>
-          </View>
         </NativeRouter>
     );
   }

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
-import {Button} from "../common";
-import {Price} from "./common/Price";
+import {Accesibility, Participants, Price, Type} from "./common";
 
 const detail = {
     activity: "Learn Express.js",
@@ -14,30 +13,48 @@ const detail = {
 };
 
 function ActivityDetail({color}) {
-    const {view, activity} = styles;
+    const {view, container, activity, priceContainer, infoContainer} = styles;
     return(
         <View style={view}>
-            <Text style={activity}>
-                The force is strong with this one.
-            </Text>
-            <Price price={detail.price} />
-
+            <View style={container}>
+                <Text style={activity}>
+                    The force is strong with this one.
+                </Text>
+                <View style={priceContainer}><Price price={detail.price} color={"#D9827E"}/></View>
+                <View style={infoContainer}>
+                    <Accesibility accesibility={detail.accessibility} color={"#D9827E"}/>
+                    <Type type={detail.type} color={"#D9827E"}/>
+                    <Participants participants={detail.participants} color={"#D9827E"}/>
+                </View>
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     view: {
+        backgroundColor: "#EDF2F5",
        flex: 1,
         justifyContent: "center",
 
     },
+    container: {
+        paddingHorizontal: 20,
+    },
     activity: {
+        color: "#D9827E",
         fontSize: 50,
         fontWeight: "600",
-        padding: 20,
         textAlignVertical: "center",
     },
+    priceContainer: {
+        marginTop: 20,
+    },
+    infoContainer: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        marginTop: 30
+    }
 });
 
 export { ActivityDetail };
