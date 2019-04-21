@@ -1,6 +1,8 @@
 import React from 'react';
 import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
 import {Accesibility, Participants, Price, Type} from "./common";
+import {BackButton} from "../../common";
+
 
 const detail = {
     activity: "Learn Express.js",
@@ -16,6 +18,7 @@ function ActivityDetail({color}) {
     const {view, container, activity, priceContainer, infoContainer} = styles;
     return(
         <View style={view}>
+            <BackButton color={"#D9827E"} />
             <View style={container}>
                 <Text style={activity}>
                     The force is strong with this one.
