@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import {StyleSheet, Text, TextInput, View, Picker, Platform} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {BackButton, Button, SmallButton} from "../common";
+import { Field, reduxForm } from 'redux-form'
+import {Accesibility, Participants, Price, Type} from "./common";
 
-const data = ["Education", "Recreational"];
+
 class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {language:"", text: "", accesibility: 0, price: 0 };
+        this.submit = this.submit.bind(this);
+    }
+    submit(values){
+        console.log('submitting form', values);
     }
 
     render(){
-        const {view, random, labelContainer, label, textField, slider, picker, title} = styles;
+        const {view, random, labelContainer, label, picker, title} = styles;
         console.log(this.props);
         return(
             <View style={{...view,...{"backgroundColor":this.props.activity.color.backgroundColor}}}>
@@ -24,59 +30,21 @@ class Form extends Component {
                    <Text style={{...label, ...{"color": this.props.activity.color.color}}}>Accesibility</Text>
                    <Text style={{...label, ...{"color": this.props.activity.color.color}}}>{this.state.accesibility}</Text>
                </View>
-
-               <Slider
-                   style={slider}
-                   minimumValue={0}
-                   maximumValue={10}
-                   minimumTrackTintColor={this.props.activity.color.color}
-                   maximumTrackTintColor="#fff"
-                   onValueChange={(accesibility) => this.setState({accesibility})}
-
-                   step={1}
-               />
+               <Field name="accesibility" component={Accesibility} props={this.props.activity.color}/>
 
                <Text style={{...title, ...{"color": this.props.activity.color.color}}}>Participants</Text>
-               <TextInput
-                   keyboardType={"numeric"}
-                   onChangeText={(text) => this.setState({text})}
-                   returnKeyType={(Platform.OS === 'ios') ? 'done' : 'next'}
-                   style={{...textField, ...{"color":this.props.activity.color.color, "borderColor": this.props.activity.color.color}}}
-                   value={this.state.text}
-               />
+               <Field name="participants" component={Participants} props={this.props.activity.color}/>
+
                <View style={labelContainer}>
                    <Text style={{...label, ...{"color": this.props.activity.color.color}}}>Price</Text>
                    <Text style={{...label, ...{"color": this.props.activity.color.color}}}>{this.state.price}</Text>
                </View>
-               <Slider
-                   style={slider}
-                   minimumValue={0}
-                   maximumValue={5}
-                   minimumTrackTintColor={this.props.activity.color.color}
-                   maximumTrackTintColor="#FFF"
-                   onValueChange={(price) => this.setState({price})}
-                   step={1}
-               />
+              <Field name="price" component={Price} props={this.props.activity.color}/>
+
                <Text style={{...title, ...{"color": this.props.activity.color.color}}}>Type</Text>
-               <Picker
-                   itemStyle={{"color":this.props.activity.color.color}}
-                   selectedValue={this.state.language}
-                   mode="dropdown"
-                   style={picker}
-                   onValueChange={(itemValue, itemIndex) =>
-                       this.setState({language: itemValue})
-                   }>
-                   <Picker.Item label="Education" value="education" />
-                   <Picker.Item label="Recreational" value="recreational" />
-                   <Picker.Item label="Social" value="social" />
-                   <Picker.Item label="DIY" value="diy" />
-                   <Picker.Item label="Charity" value="charity" />
-                   <Picker.Item label="Cooking" value="cooking" />
-                   <Picker.Item label="Relaxation" value="relaxation" />
-                   <Picker.Item label="Music" value="music" />
-                   <Picker.Item label="Busywork" value="busywork" />
-               </Picker>
-               <Button color={this.props.activity.color.color}>Filter</Button>
+                <Field name="type" component={Type} props={this.props.activity.color}/>
+
+               <Button color={this.props.activity.color.color} onPress={this.props.handleSubmit(this.submit)}>Filter</Button>
            </View>
 
 
@@ -111,21 +79,10 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 30,
     },
-    textField: {
-        borderColor: "#000",
-        borderRadius: 20,
-        borderWidth: 1,
-        height: 40,
-        justifyContent: "center",
-        paddingHorizontal: 20
-    },
-    slider: {
-        height: 40
-    },
-    picker: {
-        alignSelf: "center",
-        width: 150
-    }
+
+
 });
 
-export default Form;
+export default reduxForm({
+    form: "filter"
+})(Form)
