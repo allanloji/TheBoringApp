@@ -1,23 +1,41 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import Slider from "@react-native-community/slider";
 
-function Price({color, input: { onChange }}) {
-    const {slider} = styles;
+function Price({color, input: { onChange, value }}) {
+    const {slider, labelContainer, label} = styles;
+    const labelStyle= {...label, ...{"color": color}};
     return (
-        <Slider
-            style={slider}
-            minimumValue={0}
-            maximumValue={5}
-            minimumTrackTintColor={color}
-            maximumTrackTintColor="#FFF"
-            onValueChange={onChange}
-            step={1}
-        />
+        <View>
+            <View style={labelContainer}>
+                <Text style={labelStyle}>Price</Text>
+                <Text style={labelStyle}>{value}</Text>
+            </View>
+            <Slider
+                style={slider}
+                minimumValue={0}
+                maximumValue={5}
+                minimumTrackTintColor={color}
+                maximumTrackTintColor="#FFF"
+                onValueChange={onChange}
+                step={1}
+            />
+        </View>
+
     );
 }
 
 const styles = StyleSheet.create({
+    labelContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 10,
+        marginTop: 30,
+    },
+    label: {
+        fontSize: 20,
+        marginRight: 20,
+    },
     slider: {
         height: 40
     },
