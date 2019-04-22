@@ -10,7 +10,7 @@ const detail = {
     type: "education",
     participants: 1,
     price: 0.1,
-    "link": "https://expressjs.com/",
+    link: "https://expressjs.com/",
     key: "3943506"
 };
 

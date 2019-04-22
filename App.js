@@ -9,12 +9,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text} from 'react-native';
 import { NativeRouter, Route } from "react-router-native";
-import ActivityScreen from "./src/components/activity/ActivityScreen";
-import Form from "./src/components/Form/Form";
 import { Provider } from 'react-redux';
 import activityContainer from './src/containers/activityContainer';
 import configureStore from './src/redux/configureStore';
 import activityDetailContainer from "./src/containers/activityDetailContainer";
+import formContainer from "./src/containers/formContainer";
 
 
 
@@ -22,7 +21,6 @@ import activityDetailContainer from "./src/containers/activityDetailContainer";
 
 const About = () => <Text style={styles.header}>About</Text>;
 
-const Topic = () => <Text style={styles.header}>Topic</Text>;
 
 const store = configureStore();
 
@@ -35,7 +33,7 @@ export default class App extends Component{
             <Provider store={store}>
               <Route exact path="/" component={activityContainer} />
               <Route path="/about" component={About} />
-              <Route path="/form" component={Form} />
+              <Route path="/form" component={formContainer} />
               <Route path="/details" component={activityDetailContainer} />
             </Provider>
           </NativeRouter>
