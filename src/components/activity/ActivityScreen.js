@@ -58,13 +58,11 @@ class ActivityScreen extends Component {
     }
 
     setRandomColor(){
-        const color = Math.floor(Math.random() * 10);
-        if(color === this.state.color){
+        const color = colors[Math.floor(Math.random() * 10)];
+        if(color === this.props.activity.color){
             return this.setRandomColor();
         }
-        this.setState({
-            color: color
-        });
+        this.props.colorChange(color);
 
     }
 
@@ -86,17 +84,18 @@ class ActivityScreen extends Component {
 
     render(){
         const {view, activity, buttonContainer, filter} = styles;
+        console.log(this.props);
         return(
-            <View style={{...view, ...{"backgroundColor": colors[this.state.color].backgroundColor}}}>
+            <View style={{...view, ...{"backgroundColor": this.props.activity.color.backgroundColor}}}>
                 <View style={filter}>
-                    <SmallButton onPress={this.onFilterPressed} color={colors[this.state.color].color}>Filter</SmallButton>
+                    <SmallButton onPress={this.onFilterPressed} color={this.props.activity.color.color}>Filter</SmallButton>
                 </View>
                 <SwipeGesture gestureStyle={view} onSwipePerformed={this.onSwipePerformed}>
-                    <Text style={{...activity, ...{"color": colors[this.state.color].color}}}>
+                    <Text style={{...activity, ...{"color": this.props.activity.color.color}}}>
                         The force is strong with this one.
                     </Text>
                     <View style={buttonContainer}>
-                        <Button color={colors[this.state.color].color} onPress={this.onDetailPressed}>Details</Button>
+                        <Button color={this.props.activity.color.color} onPress={this.onDetailPressed}>Details</Button>
                     </View>
                 </SwipeGesture>
                 <NavBar/>

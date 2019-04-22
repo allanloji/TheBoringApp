@@ -7,13 +7,10 @@ function NavBar() {
     return(
         <View style={nav}>
             <Link to="/" underlayColor="#f0f4f7" style={navItem}>
-                <Text>Home</Text>
+                <Text>Activity</Text>
             </Link>
             <Link to="/details" underlayColor="#f0f4f7" style={navItem}>
-                <Text>About</Text>
-            </Link>
-            <Link to="/form" underlayColor="#f0f4f7" style={navItem}>
-                <Text>Topics</Text>
+                <Text>Favorites</Text>
             </Link>
         </View>
     );
