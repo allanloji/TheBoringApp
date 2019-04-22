@@ -30,7 +30,7 @@ export default class App extends Component<Props> {
         <NativeRouter>
             <Route exact path="/" component={ActivityScreen} />
             <Route path="/about" component={About} />
-            <Route path="/topics" component={Form} />
+            <Route path="/form" component={Form} />
             <Route path="/details" component={ActivityDetail} />
         </NativeRouter>
     );

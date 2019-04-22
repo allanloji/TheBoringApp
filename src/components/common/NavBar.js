@@ -12,7 +12,7 @@ function NavBar() {
             <Link to="/details" underlayColor="#f0f4f7" style={navItem}>
                 <Text>About</Text>
             </Link>
-            <Link to="/topics" underlayColor="#f0f4f7" style={navItem}>
+            <Link to="/form" underlayColor="#f0f4f7" style={navItem}>
                 <Text>Topics</Text>
             </Link>
         </View>

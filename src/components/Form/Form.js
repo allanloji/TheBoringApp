@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, TextInput, View, Picker, Platform} from 'react-native';
 import Slider from '@react-native-community/slider';
-import {BackButton, Button} from "../common";
+import {BackButton, Button, SmallButton} from "../common";
 
 const data = ["Education", "Recreational"];
 class Form extends Component {
@@ -11,10 +11,14 @@ class Form extends Component {
     }
 
     render(){
-        const {view, labelContainer, label, textField, slider, picker, title} = styles;
+        const {view, random, labelContainer, label, textField, slider, picker, title} = styles;
         return(
            <View style={view}>
                <BackButton/>
+               <View style={random}>
+                   <SmallButton>Random</SmallButton>
+               </View>
+
                <View style={labelContainer}>
                    <Text style={label}>Accesibility</Text>
                    <Text style={label}>{this.state.accesibility}</Text>
@@ -82,6 +86,12 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 100,
         paddingHorizontal: 20
+    },
+    random: {
+       position: "absolute",
+        top: 50,
+        right: 20
+
     },
     labelContainer: {
       flexDirection: "row",

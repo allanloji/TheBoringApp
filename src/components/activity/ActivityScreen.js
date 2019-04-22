@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View,} from 'react-native';
 import SwipeGesture from '../../../scripts/swipe-gesture';
-import {Button, NavBar} from "../common";
+import {Button, NavBar, SmallButton} from "../common";
 
 
 const colors = [
@@ -54,6 +54,7 @@ class ActivityScreen extends Component {
         this.setRandomColor = this.setRandomColor.bind(this);
         this.onSwipePerformed = this.onSwipePerformed.bind(this);
         this.onDetailPressed = this.onDetailPressed.bind(this);
+        this.onFilterPressed = this.onFilterPressed.bind(this);
     }
 
     setRandomColor(){
@@ -77,16 +78,26 @@ class ActivityScreen extends Component {
         this.props.history.push("/details")
     }
 
+    onFilterPressed(){
+        this.props.history.push("/form")
+    }
+
+
 
     render(){
-        const {view, activity} = styles;
+        const {view, activity, buttonContainer, filter} = styles;
         return(
             <View style={{...view, ...{"backgroundColor": colors[this.state.color].backgroundColor}}}>
+                <View style={filter}>
+                    <SmallButton onPress={this.onFilterPressed} color={colors[this.state.color].color}>Filter</SmallButton>
+                </View>
                 <SwipeGesture gestureStyle={view} onSwipePerformed={this.onSwipePerformed}>
                     <Text style={{...activity, ...{"color": colors[this.state.color].color}}}>
                         The force is strong with this one.
                     </Text>
-                    <Button color={colors[this.state.color].color} onPress={this.onDetailPressed}>Details</Button>
+                    <View style={buttonContainer}>
+                        <Button color={colors[this.state.color].color} onPress={this.onDetailPressed}>Details</Button>
+                    </View>
                 </SwipeGesture>
                 <NavBar/>
             </View>
@@ -107,6 +118,15 @@ const styles = StyleSheet.create({
         padding: 20,
         textAlignVertical: "center",
     },
+    buttonContainer: {
+        top: 150
+    },
+    filter: {
+        position: "absolute",
+        top: 50,
+        right: 20,
+        zIndex: 2
+    }
 
 
 });
