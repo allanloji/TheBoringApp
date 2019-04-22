@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import {Accesibility, Participants, Price, Type} from "./common";
 import {BackButton} from "../../common";
@@ -14,24 +14,32 @@ const detail = {
     key: "3943506"
 };
 
-function ActivityDetail({color}) {
-    const {view, container, activity, priceContainer, infoContainer} = styles;
-    return(
-        <View style={view}>
-            <BackButton color={"#D9827E"} />
-            <View style={container}>
-                <Text style={activity}>
-                    The force is strong with this one.
-                </Text>
-                <View style={priceContainer}><Price price={detail.price} color={"#D9827E"}/></View>
-                <View style={infoContainer}>
-                    <Accesibility accesibility={detail.accessibility} color={"#D9827E"}/>
-                    <Type type={detail.type} color={"#D9827E"}/>
-                    <Participants participants={detail.participants} color={"#D9827E"}/>
+class ActivityDetail extends Component{
+    constructor(props) {
+        super(props);
+    }
+
+    render(){
+        const {view, container, activity, priceContainer, infoContainer} = styles;
+        console.log(this.props);
+        return(
+            <View style={{...view,...{"backgroundColor":this.props.activity.color.backgroundColor}}}>
+                <BackButton color={this.props.activity.color.color} />
+                <View style={container}>
+                    <Text style={{...activity, ...{"color":this.props.activity.color.color}}}>
+                        {this.props.activity.activity}
+                    </Text>
+                    <View style={priceContainer}><Price price={this.props.activity.price} color={this.props.activity.color.color}/></View>
+                    <View style={infoContainer}>
+                        <Accesibility accesibility={this.props.activity.accessibility} color={this.props.activity.color.color}/>
+                        <Type type={this.props.activity.type} color={this.props.activity.color.color}/>
+                        <Participants participants={this.props.activity.participants} color={this.props.activity.color.color}/>
+                    </View>
                 </View>
             </View>
-        </View>
-    );
+        );
+    }
+
 }
 
 const styles = StyleSheet.create({
@@ -60,4 +68,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export { ActivityDetail };
+export default ActivityDetail;

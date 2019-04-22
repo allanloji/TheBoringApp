@@ -92,7 +92,7 @@ class ActivityScreen extends Component {
                 </View>
                 <SwipeGesture gestureStyle={view} onSwipePerformed={this.onSwipePerformed}>
                     <Text style={{...activity, ...{"color": this.props.activity.color.color}}}>
-                        The force is strong with this one.
+                        {this.props.activity.activity}
                     </Text>
                     <View style={buttonContainer}>
                         <Button color={this.props.activity.color.color} onPress={this.onDetailPressed}>Details</Button>

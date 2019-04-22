@@ -10,11 +10,11 @@ import React, {Component} from 'react';
 import {StyleSheet, Text} from 'react-native';
 import { NativeRouter, Route } from "react-router-native";
 import ActivityScreen from "./src/components/activity/ActivityScreen";
-import {ActivityDetail} from "./src/components/activity/ActivityDetail/ActivityDetail";
 import Form from "./src/components/Form/Form";
 import { Provider } from 'react-redux';
 import activityContainer from './src/containers/activityContainer';
 import configureStore from './src/redux/configureStore';
+import activityDetailContainer from "./src/containers/activityDetailContainer";
 
 
 
@@ -36,7 +36,7 @@ export default class App extends Component{
               <Route exact path="/" component={activityContainer} />
               <Route path="/about" component={About} />
               <Route path="/form" component={Form} />
-              <Route path="/details" component={ActivityDetail} />
+              <Route path="/details" component={activityDetailContainer} />
             </Provider>
           </NativeRouter>
 
