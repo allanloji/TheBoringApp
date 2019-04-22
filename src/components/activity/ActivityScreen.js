@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View,} from 'react-native';
-import {Button} from "./common";
 import SwipeGesture from '../../../scripts/swipe-gesture';
-import {NavBar} from "../common";
+import {Button, NavBar} from "../common";
 
 
 const colors = [
@@ -87,7 +86,7 @@ class ActivityScreen extends Component {
                     <Text style={{...activity, ...{"color": colors[this.state.color].color}}}>
                         The force is strong with this one.
                     </Text>
-                    <Button color={colors[this.state.color].color} onPress={this.onDetailPressed}/>
+                    <Button color={colors[this.state.color].color} onPress={this.onDetailPressed}>Details</Button>
                 </SwipeGesture>
                 <NavBar/>
             </View>

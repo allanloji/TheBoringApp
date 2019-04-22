@@ -7,10 +7,11 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import { NativeRouter, Route, Link } from "react-router-native";
+import {StyleSheet, Text} from 'react-native';
+import { NativeRouter, Route } from "react-router-native";
 import ActivityScreen from "./src/components/activity/ActivityScreen";
 import {ActivityDetail} from "./src/components/activity/ActivityDetail/ActivityDetail";
+import Form from "./src/components/Form/Form";
 
 
 
@@ -29,7 +30,7 @@ export default class App extends Component<Props> {
         <NativeRouter>
             <Route exact path="/" component={ActivityScreen} />
             <Route path="/about" component={About} />
-            <Route path="/topics" component={Topic} />
+            <Route path="/topics" component={Form} />
             <Route path="/details" component={ActivityDetail} />
         </NativeRouter>
     );
