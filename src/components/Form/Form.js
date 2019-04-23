@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import {BackButton, Button, SmallButton} from "../common";
 import { Field, reduxForm } from 'redux-form'
 import {Accesibility, Participants, Price, Type} from "./common";
@@ -24,7 +24,7 @@ class Form extends Component {
     }
 
     render(){
-        const {view, random} = styles;
+        const {view, random, button} = styles;
         return(
             <View style={{...view,...{"backgroundColor":this.props.activity.color.backgroundColor}}}>
                <BackButton color={this.props.activity.color.color}/>
@@ -44,10 +44,13 @@ class Form extends Component {
                <Field name="type" component={Type}
                       props={{color: this.props.activity.color.color, lastValue:this.props.activity.filter.type}}/>
 
-               <Button color={this.props.activity.color.color}
-                       onPress={this.props.handleSubmit((values) => this.submit(values))}>
-                   Filter
-               </Button>
+              <View style={button}>
+                  <Button color={this.props.activity.color.color}
+                          onPress={this.props.handleSubmit((values) => this.submit(values))}>
+                      Filter
+                  </Button>
+              </View>
+
            </View>
         );
     }
@@ -64,6 +67,9 @@ const styles = StyleSheet.create({
         right: 20,
         top: 50,
     },
+    button: {
+        top: Platform.OS === 'ios' ? -100 : 0,
+    }
 });
 
 Form.propTypes = {

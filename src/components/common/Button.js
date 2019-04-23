@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 
 function Button({onPress, color, children}) {
     const {container, text} = styles;
+    const containerStyle = {...container, ...{"borderColor": color}};
     const textStyle = {...text, ...{"color": color}};
     return (
-        <TouchableOpacity onPress={onPress} style={{...container, ...{"borderColor": color}}}>
+        <TouchableOpacity onPress={onPress} style={containerStyle}>
             <Text style={textStyle}>{children}</Text>
         </TouchableOpacity>
     );

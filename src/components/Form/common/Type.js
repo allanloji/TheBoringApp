@@ -1,5 +1,5 @@
 import React from 'react';
-import {Picker, StyleSheet, Text, View} from 'react-native';
+import {Picker, Platform, StyleSheet, Text, View} from 'react-native';
 import PropTypes from "prop-types";
 import {Accesibility} from "./Accesibility";
 
@@ -41,11 +41,11 @@ function Type({lastValue, color, input: { onChange, value }}) {
 const styles = StyleSheet.create({
     title: {
         fontSize: 20,
-        marginBottom: 10,
         marginTop: 30,
     },
     picker: {
         alignSelf: "center",
+        top: Platform.OS === 'ios' ? -100 : 0,
         width: 150
     },
 });
