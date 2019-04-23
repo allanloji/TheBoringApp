@@ -4,6 +4,7 @@ const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
 const FETCH_ACTIVITY = "FETCH_ACTIVITY";
 const FETCH_ACTIVITY_FAILURE = "FETCH_ACTIVITY_FAILURE";
 const FETCH_ACTIVITY_SUCCESS = "FETCH_ACTIVITY_SUCCESS";
+const RANDOM_ACTIVITY = "RANDOM_ACTIVITY";
 
 
 const initialState = {
@@ -58,6 +59,12 @@ export function filterActivity(filter){
     }
 }
 
+export function randomActivity(){
+    return {
+        type: RANDOM_ACTIVITY
+    }
+}
+
 
 
 
@@ -102,6 +109,13 @@ export default function reducer(state = initialState, action){
                 {},
                 state,
                 {filter: action.filter, query: query}
+            );
+
+        case RANDOM_ACTIVITY:
+            return Object.assign(
+                {},
+                state,
+                {filter: {}, query: ""}
             );
 
 

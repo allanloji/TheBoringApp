@@ -11,11 +11,17 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {language:"", text: "", accesibility: 0, price: 0 };
+        this.eraseFilters= this.eraseFilters.bind(this);
     }
 
     submit(values){
         this.props.filterActivity(values);
-        console.log('submitting form', values)
+        this.props.history.push("/")
+    }
+
+    eraseFilters(){
+        this.props.randomActivity();
+        this.props.history.push("/")
     }
 
     render(){
@@ -25,7 +31,7 @@ class Form extends Component {
             <View style={{...view,...{"backgroundColor":this.props.activity.color.backgroundColor}}}>
                <BackButton color={this.props.activity.color.color}/>
                <View style={random}>
-                   <SmallButton color={this.props.activity.color.color}>Random</SmallButton>
+                   <SmallButton color={this.props.activity.color.color} onPress={this.eraseFilters}>No Filters</SmallButton>
                </View>
 
 
