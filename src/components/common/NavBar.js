@@ -25,11 +25,10 @@ const styles = StyleSheet.create({
         position:"absolute",
     },
     navItem: {
-        flex: 1,
         alignItems: "center",
+        flex: 1,
         padding: 10
     },
-
 });
 
 export { NavBar };

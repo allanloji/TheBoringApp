@@ -20,7 +20,7 @@ function Type({lastValue, color, input: { onChange, value }}) {
                 style={picker}
                 onValueChange={onChange}
             >
-                <Picker.Item label="Random" value="random" />
+                <Picker.Item label="Random" value="" />
                 <Picker.Item label="Education" value="education" />
                 <Picker.Item label="Recreational" value="recreational" />
                 <Picker.Item label="Social" value="social" />

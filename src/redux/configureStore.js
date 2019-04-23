@@ -5,7 +5,7 @@ import { reducer as formReducer } from 'redux-form';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import {fetchActivityEpic} from "../epics/activityEpic";
 
-const loggerMiddleware = createLogger(); // initialize logger
+const loggerMiddleware = createLogger();
 const epicMiddleware = createEpicMiddleware();
 
 const reducer = combineReducers({
@@ -17,7 +17,7 @@ const epic = combineEpics(
     fetchActivityEpic
 );
 
-const store =  createStore(reducer, applyMiddleware(loggerMiddleware, epicMiddleware));// apply logger to redux
+const store =  createStore(reducer, applyMiddleware(loggerMiddleware, epicMiddleware));
 
 epicMiddleware.run(epic);
 export default store;

@@ -5,8 +5,6 @@ import { Field, reduxForm } from 'redux-form'
 import {Accesibility, Participants, Price, Type} from "./common";
 
 
-
-
 class Form extends Component {
     constructor(props) {
         super(props);
@@ -47,10 +45,11 @@ class Form extends Component {
                <Field name="type" component={Type}
                       props={{color: this.props.activity.color.color, lastValue:this.props.activity.filter.type}}/>
 
-               <Button color={this.props.activity.color.color} onPress={this.props.handleSubmit((values) => this.submit(values))}>Filter</Button>
+               <Button color={this.props.activity.color.color}
+                       onPress={this.props.handleSubmit((values) => this.submit(values))}>
+                   Filter
+               </Button>
            </View>
-
-
         );
     }
 }
@@ -62,14 +61,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20
     },
     random: {
-       position: "absolute",
+        position: "absolute",
+        right: 20,
         top: 50,
-        right: 20
+
 
     },
     labelContainer: {
-      flexDirection: "row",
         alignItems: "center",
+        flexDirection: "row",
         marginBottom: 10,
         marginTop: 30,
     },
@@ -77,9 +77,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginRight: 20,
     },
-
-
-
 });
 
 export default reduxForm({

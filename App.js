@@ -17,13 +17,6 @@ import formContainer from "./src/containers/formContainer";
 
 
 
-
-
-const About = () => <Text style={styles.header}>About</Text>;
-
-
-
-
 export default class App extends Component{
   render() {
     return (
@@ -31,7 +24,6 @@ export default class App extends Component{
           <NativeRouter>
             <Provider store={store}>
               <Route exact path="/" component={activityContainer} />
-              <Route path="/about" component={About} />
               <Route path="/form" component={formContainer} />
               <Route path="/details" component={activityDetailContainer} />
             </Provider>
@@ -41,25 +33,3 @@ export default class App extends Component{
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  header: {
-    fontSize: 20
-  },
-  nav: {
-    backgroundColor: "#fff",
-    bottom: 0,
-    flexDirection: "row",
-    paddingBottom: 20,
-    position:"absolute",
-  },
-  navItem: {
-    flex: 1,
-    alignItems: "center",
-    padding: 10
-  },
-
-});

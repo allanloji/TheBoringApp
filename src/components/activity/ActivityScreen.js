@@ -3,7 +3,6 @@ import {StyleSheet, Text, View,} from 'react-native';
 import SwipeGesture from '../../../scripts/swipe-gesture';
 import {Button, NavBar, SmallButton} from "../common";
 
-
 const colors = [
     {
         backgroundColor: "#EDF2F5",
@@ -50,7 +49,6 @@ const colors = [
 class ActivityScreen extends Component {
     constructor(props){
         super(props);
-        this.state = {color:0 };
         this.setRandomColor = this.setRandomColor.bind(this);
         this.onSwipePerformed = this.onSwipePerformed.bind(this);
         this.onDetailPressed = this.onDetailPressed.bind(this);
@@ -63,7 +61,6 @@ class ActivityScreen extends Component {
             return this.setRandomColor();
         }
         this.props.colorChange(color);
-
     }
 
     onSwipePerformed(action) {
@@ -80,7 +77,6 @@ class ActivityScreen extends Component {
     onFilterPressed(){
         this.props.history.push("/form")
     }
-
 
 
     render(){
@@ -100,8 +96,6 @@ class ActivityScreen extends Component {
                 </SwipeGesture>
                 <NavBar/>
             </View>
-
-
         );
     }
 }
@@ -122,8 +116,8 @@ const styles = StyleSheet.create({
     },
     filter: {
         position: "absolute",
-        top: 50,
         right: 20,
+        top: 50,
         zIndex: 2
     }
 

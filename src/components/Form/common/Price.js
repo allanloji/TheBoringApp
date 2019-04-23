@@ -31,8 +31,8 @@ function Price({lastValue, color, input: { onChange, value }}) {
 
 const styles = StyleSheet.create({
     labelContainer: {
-        flexDirection: "row",
         alignItems: "center",
+        flexDirection: "row",
         marginBottom: 10,
         marginTop: 30,
     },

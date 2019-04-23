@@ -3,9 +3,10 @@ import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 function Button({onPress, color, children}) {
     const {container, text} = styles;
+    const textStyle = {...text, ...{"color": color}};
     return (
         <TouchableOpacity onPress={onPress} style={{...container, ...{"borderColor": color}}}>
-            <Text style={{...text, ...{"color": color}}}>{children}</Text>
+            <Text style={textStyle}>{children}</Text>
         </TouchableOpacity>
     );
 }
@@ -22,8 +23,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 50,
     },
     text:{
+        color: "#000",
         fontSize: 15,
-        color: "#000"
     }
 });
 

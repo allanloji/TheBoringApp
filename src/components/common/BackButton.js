@@ -4,10 +4,11 @@ import {Link} from "react-router-native";
 
 function BackButton({color}) {
     const {container, buttonContainer, arrow} = styles;
+    const arrowStyle = {...arrow, ...{"color": color}};
     return(
         <View style={container}>
             <Link to="/" style={buttonContainer}>
-                <Text style={{...arrow, ...{"color": color}}}>{"<"}</Text>
+                <Text style={arrowStyle}>{"<"}</Text>
             </Link>
         </View>
     );
@@ -15,19 +16,19 @@ function BackButton({color}) {
 
 const styles = StyleSheet.create({
     container: {
-        top: 30,
         left: 20,
         position:"absolute",
+        top: 30,
+
     },
     buttonContainer: {
-        flex: 1,
         alignItems: "center",
+        flex: 1,
         padding: 10
     },
     arrow: {
         fontSize: 40,
     }
-
 });
 
 export { BackButton };

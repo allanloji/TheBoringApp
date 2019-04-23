@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View} from 'react-native';
 
 function Price({price, color}) {
     return (
@@ -10,13 +10,14 @@ function Price({price, color}) {
 }
 
 function drawPrices(price, color){
-    const {container, text, emptyText} = styles;
-
-     const symbolCont =Math.ceil(price * 5);
+     const {container, text, emptyText} = styles;
+     const textStyle = {...text, ...{"color": color}};
+     const symbolCont = Math.ceil(price * 5);
 
      let priceText = "";
      let emptyPrice= "";
      let i = 0;
+
      while(i < 5){
          if(i < symbolCont){
              priceText += "$";
@@ -25,9 +26,10 @@ function drawPrices(price, color){
          }
          i++;
      }
+
     return(
       <View style={container}>
-          <Text style={{...text, ...{"color": color}}}>{priceText}</Text>
+          <Text style={textStyle}>{priceText}</Text>
           <Text style={emptyText}>{emptyPrice}</Text>
       </View>
     );

@@ -11,12 +11,14 @@ function Accesibility({accesibility, color}) {
 
 function calculateAccesibility(accesibility, color){
     const {container, value, text} = styles;
-
+    const valueStyle =  {...value, ...{"color": color}};
+    const textStyle =  {...text, ...{"color": color}};
     const valueCont = -(Math.ceil(accesibility * 10)) +  10;
+
     return(
         <View style={container}>
-            <Text style={{...value, ...{"color": color}}}>{valueCont + "/10"}</Text>
-            <Text style={{...text, ...{"color": color}}}>Accesibility</Text>
+            <Text style={valueStyle}>{valueCont + "/10"}</Text>
+            <Text style={textStyle}>Accesibility</Text>
         </View>
     );
 
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
         color: "#000",
         fontSize: 15,
     },
-
 });
 
 export { Accesibility };

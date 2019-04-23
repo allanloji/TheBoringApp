@@ -4,14 +4,15 @@ import _ from 'lodash';
 
 function Type({type, color}) {
     const {container, value, text} = styles;
+    const valueStyle = {...value, ...{"color": color}};
+    const textStyle = {...text, ...{"color": color}};
     return (
         <View style={container}>
-            <Text style={{...value, ...{"color": color}}}>{_.capitalize(type)}</Text>
-            <Text style={{...text, ...{"color": color}}}>Type</Text>
+            <Text style={valueStyle}>{_.capitalize(type)}</Text>
+            <Text style={textStyle}>Type</Text>
         </View>
     );
 }
-
 
 
 const styles = StyleSheet.create({
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
         color: "#000",
         fontSize: 15,
     },
-
 });
 
 export { Type };

@@ -1,16 +1,9 @@
-
 import { ajax } from 'rxjs/ajax';
-import {fetchActivity, fetchActivityFailure, fetchActivitySuccess} from "../redux/modules/activity";
+import {fetchActivityFailure, fetchActivitySuccess} from "../redux/modules/activity";
 import {ofType} from "redux-observable";
-import {mergeMap, switchMap, map, catchError} from "rxjs/operators";
-import {Observable} from "rxjs";
-
+import {mergeMap, map, catchError} from "rxjs/operators";
 
 const FETCH_ACTIVITY = "FETCH_ACTIVITY";
-
-
-const url = 'http://www.boredapi.com/api/activity/';
-
 
 export const fetchActivityEpic = action$ =>
     action$.pipe(

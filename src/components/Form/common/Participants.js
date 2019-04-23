@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Platform, TextInput, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import Slider from "@react-native-community/slider";
 
 function Participants({lastValue,color, input: { onChange, value }}) {
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
         marginRight: 20,
     },
     labelContainer: {
-        flexDirection: "row",
         alignItems: "center",
+        flexDirection: "row",
         marginBottom: 10,
         marginTop: 30,
     },

@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import Form from "../components/Form/Form";
 import {colorChange, filterActivity, randomActivity} from "../redux/modules/activity";
 
-
 function mapStateToProps(state) {
     return {
         activity: state.activity,
@@ -17,7 +16,6 @@ function mapDispatchToProps(dispatch) {
 
     };
 }
-
 
 export default connect(
     mapStateToProps,

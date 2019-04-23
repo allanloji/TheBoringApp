@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
         height: 40
     },
     labelContainer: {
-        flexDirection: "row",
         alignItems: "center",
+        flexDirection: "row",
         marginBottom: 10,
         marginTop: 30,
     },

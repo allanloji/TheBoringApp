@@ -12,12 +12,13 @@ class ActivityDetail extends Component{
 
     render(){
         const {view, container, activity, priceContainer, infoContainer} = styles;
-        console.log(this.props);
+        const viewStyle = {...view,...{"backgroundColor":this.props.activity.color.backgroundColor}};
+        const activityStyle = {...activity, ...{"color":this.props.activity.color.color}};
         return(
-            <View style={{...view,...{"backgroundColor":this.props.activity.color.backgroundColor}}}>
+            <View style={viewStyle}>
                 <BackButton color={this.props.activity.color.color} />
                 <View style={container}>
-                    <Text style={{...activity, ...{"color":this.props.activity.color.color}}}>
+                    <Text style={activityStyle}>
                         {this.props.activity.activity.activity}
                     </Text>
                     <View style={priceContainer}><Price price={this.props.activity.activity.price} color={this.props.activity.color.color}/></View>
@@ -36,9 +37,8 @@ class ActivityDetail extends Component{
 const styles = StyleSheet.create({
     view: {
         backgroundColor: "#EDF2F5",
-       flex: 1,
+        flex: 1,
         justifyContent: "center",
-
     },
     container: {
         paddingHorizontal: 20,

@@ -1,4 +1,3 @@
-
 const COLOR_CHANGED = 'COLOR_CHANGED';
 const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
 const FETCH_ACTIVITY = "FETCH_ACTIVITY";
@@ -66,9 +65,6 @@ export function randomActivity(){
 }
 
 
-
-
-
 export default function reducer(state = initialState, action){
     switch (action.type){
 
@@ -86,7 +82,6 @@ export default function reducer(state = initialState, action){
                     type: "education",
                     participants: 1,
                     price: 0,
-                    key: "3943506",
                 };
             if(action.activity.activity === undefined){
                 return Object.assign(
@@ -133,9 +128,8 @@ export default function reducer(state = initialState, action){
                 {filter: {}, query: ""}
             );
 
-
-
         default:
             return state;
     }
+
 }

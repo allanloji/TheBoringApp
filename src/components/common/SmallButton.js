@@ -3,9 +3,11 @@ import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 function SmallButton({onPress, color, children}) {
     const {container, text} = styles;
+    const containerStyle = {...container, ...{"borderColor": color}};
+    const textStyle = {...text, ...{"color": color}};
     return (
-        <TouchableOpacity onPress={onPress} style={{...container, ...{"borderColor": color}}}>
-            <Text style={{...text, ...{"color": color}}}>{children}</Text>
+        <TouchableOpacity onPress={onPress} style={containerStyle}>
+            <Text style={textStyle}>{children}</Text>
         </TouchableOpacity>
     );
 }
@@ -22,8 +24,8 @@ const styles = StyleSheet.create({
         width: 100
     },
     text:{
+        color: "#000",
         fontSize: 12,
-        color: "#000"
     }
 });
 
