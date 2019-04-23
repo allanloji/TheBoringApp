@@ -69,7 +69,7 @@ class ActivityScreen extends Component {
     onSwipePerformed(action) {
         if(action === "left"){
             this.props.fetchActivity();
-            //this.setRandomColor();
+            this.setRandomColor();
         }
     }
 
@@ -93,7 +93,7 @@ class ActivityScreen extends Component {
                 </View>
                 <SwipeGesture gestureStyle={view} onSwipePerformed={this.onSwipePerformed}>
                     <Text style={{...activity, ...{"color": this.props.activity.color.color}}}>
-                        {this.props.activity.activity}
+                        {this.props.activity.activity.activity}
                     </Text>
                     <View style={buttonContainer}>
                         <Button color={this.props.activity.color.color} onPress={this.onDetailPressed}>Details</Button>

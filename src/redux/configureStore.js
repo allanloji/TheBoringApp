@@ -7,7 +7,6 @@ import {fetchActivityEpic} from "../epics/activityEpic";
 
 const loggerMiddleware = createLogger(); // initialize logger
 const epicMiddleware = createEpicMiddleware();
-const middlewares = [loggerMiddleware, epicMiddleware];
 
 const reducer = combineReducers({
     activity,

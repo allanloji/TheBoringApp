@@ -5,12 +5,14 @@ const FETCH_ACTIVITY_FAILURE = "FETCH_ACTIVITY_FAILURE";
 const FETCH_ACTIVITY_SUCCESS = "FETCH_ACTIVITY_SUCCESS";
 
 const initialState = {
-    activity: "Swipe Left to get an activity.",
-    accessibility: 0,
-    type: "education",
-    participants: 1,
-    price: 0,
-    key: "3943506",
+    activity:{
+        activity: "Swipe Left to get an activity.",
+        accessibility: 0,
+        type: "education",
+        participants: 1,
+        price: 0,
+        key: "3943506",
+    },
     color: {
         backgroundColor: "#6FBCB7",
         color: "#C0ED8A",
@@ -62,7 +64,7 @@ export default function reducer(state = initialState, action){ // a function tha
             return Object.assign(
                 {},
                 state,
-                {newActivity: action.activity}
+                {activity: action.activity}
             );
 
         default:

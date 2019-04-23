@@ -27,13 +27,13 @@ class ActivityDetail extends Component{
                 <BackButton color={this.props.activity.color.color} />
                 <View style={container}>
                     <Text style={{...activity, ...{"color":this.props.activity.color.color}}}>
-                        {this.props.activity.activity}
+                        {this.props.activity.activity.activity}
                     </Text>
-                    <View style={priceContainer}><Price price={this.props.activity.price} color={this.props.activity.color.color}/></View>
+                    <View style={priceContainer}><Price price={this.props.activity.activity.price} color={this.props.activity.color.color}/></View>
                     <View style={infoContainer}>
-                        <Accesibility accesibility={this.props.activity.accessibility} color={this.props.activity.color.color}/>
-                        <Type type={this.props.activity.type} color={this.props.activity.color.color}/>
-                        <Participants participants={this.props.activity.participants} color={this.props.activity.color.color}/>
+                        <Accesibility accesibility={this.props.activity.activity.accessibility} color={this.props.activity.color.color}/>
+                        <Type type={this.props.activity.activity.type} color={this.props.activity.color.color}/>
+                        <Participants participants={this.props.activity.activity.participants} color={this.props.activity.color.color}/>
                     </View>
                 </View>
             </View>
