@@ -20,7 +20,6 @@ class ActivityDetail extends Component{
         const {view, container, activity, priceContainer, infoContainer, favorite} = styles;
         const viewStyle = {...view,...{"backgroundColor":this.props.activity.color.backgroundColor}};
         const activityStyle = {...activity, ...{"color":this.props.activity.color.color}};
-        console.log(this.props);
         return(
             <View style={viewStyle}>
                 <BackButton color={this.props.activity.color.color} />

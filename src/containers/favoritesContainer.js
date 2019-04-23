@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import FavoritesScreen from '../components/Favorites/FavoritesScreen';
+import {deleteFavorite} from "../redux/modules/favorites";
 
 
 function mapStateToProps(state) {
@@ -11,10 +12,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-
+        deleteFavorite: (index) => dispatch(deleteFavorite(index))
     };
 }
 
 export default connect(
     mapStateToProps,
+    mapDispatchToProps
 )(FavoritesScreen);

@@ -12,23 +12,49 @@ class FavoritesScreen extends Component {
 
     }
 
+    deleteFavorite(index) {
+        this.props.deleteFavorite(index)
+    };
+
+    renderList(){
+        const {footer, empty, emptyText, listContainer} = styles;
+        const emptyTextStyle = {...emptyText, ...{"color": this.props.activity.color.color}};
+        if(this.props.favorites.favorites.length > 0){
+            return(
+                <View style={listContainer}>
+                    <FlatList
+                        data={this.props.favorites.favorites}
+                        renderItem={({item, index}) => (
+                            <View>
+                                <Favorite id={index} activity={item} color={this.props.activity.color.color}
+                                          onPress={this.deleteFavorite.bind(this,index)} />
+                            </View>
+                        )
+                        }
+                        showsVerticalScrollIndicator={false}
+                        ListFooterComponent={<View style={footer}></View>}
+                    />
+                </View>
+
+            );
+        }else{
+            return (
+                <View style={empty}>
+                    <Text style={emptyTextStyle}>No favorite activities added.</Text>
+                </View>
+            );
+
+        }
+    }
+
+
+
     render(){
-        const {view, activity, buttonContainer, filter} = styles;
+        const {view} = styles;
         const viewStyle = {...view, ...{"backgroundColor": this.props.activity.color.backgroundColor}};
-        console.log(this.props);
         return(
             <View style={viewStyle}>
-                <FlatList
-                    data={this.props.favorites.favorites}
-                    renderItem={({item}) => (
-                        <View>
-                            <Favorite activity={item} color={this.props.activity.color.color}/>
-                        </View>
-                    )
-                    }
-                    showsVerticalScrollIndicator={false}
-                    ListFooterComponent={<View style={{ height: 0, marginBottom: 100 }}></View>}
-                />
+                {this.renderList()}
                 <NavBar/>
             </View>
         );
@@ -38,8 +64,26 @@ class FavoritesScreen extends Component {
 const styles = StyleSheet.create({
     view: {
         flex: 1,
-        paddingTop: 50
     },
+    footer: {
+        height: 0,
+        marginBottom: 100
+    },
+    listContainer: {
+        marginTop: 40
+    },
+    empty: {
+        alignItems: "center",
+        alignSelf: "center",
+        flex: 1,
+        justifyContent: "center"
+    },
+    emptyText: {
+        fontSize: 50,
+        fontWeight: "600",
+        padding: 20,
+        textAlignVertical: "center",
+    }
 });
 
 FavoritesScreen.propTypes = {

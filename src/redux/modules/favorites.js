@@ -3,13 +3,7 @@ const DELETE_FAVORITE = "DELETE_FAVORITE";
 
 const initialState = {
     favorites: [
-        {
-            activity: "Swipe Left to get an Activity.",
-            accessibility: 0,
-            type: "education",
-            participants: 1,
-            price: 0,
-        },
+
     ]
 };
 
