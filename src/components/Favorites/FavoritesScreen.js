@@ -24,6 +24,7 @@ class FavoritesScreen extends Component {
                 <View style={listContainer}>
                     <FlatList
                         data={this.props.favorites.favorites}
+                        keyExtractor={(item,index) => index.toString()}
                         renderItem={({item, index}) => (
                             <View>
                                 <Favorite id={index} activity={item} color={this.props.activity.color.color}
@@ -87,7 +88,6 @@ const styles = StyleSheet.create({
 
 FavoritesScreen.propTypes = {
     activity: PropTypes.object,
-    favorites: PropTypes.arrayOf(PropTypes.object),
     deleteFavorite: PropTypes.func
 };
 
@@ -105,7 +105,7 @@ FavoritesScreen.defaultProps = {
             color: "#C0ED8A",
         },
     },
-    favorites: [],
+
     deleteFavorite: () => console.log("deleteFavorite")
 
 };
