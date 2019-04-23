@@ -21,7 +21,7 @@ const initialState = {
         backgroundColor: "#6FBCB7",
         color: "#C0ED8A",
     },
-}; //The initial state of this reducer (will be combined with the states of other reducers as your app grows)
+};
 
 export function colorChange(newColor){
     return {
@@ -83,8 +83,21 @@ export default function reducer(state = initialState, action){
             let query="";
             //Range of API 0-1.0 0 being the most accesible
             if(action.filter.accesibility !== undefined){
-                query+="accessibility=" + (-(action.filter.accesibility/10) + 1.0).toFixed(1)
+                query+="accessibility=" + (-(action.filter.accesibility/10) + 1.0).toFixed(1) + "&";
             }
+
+            if(action.filter.participants !== undefined){
+                query+="participants=" + action.filter.participants + "&";
+            }
+
+            if(action.filter.price !== undefined){
+                query+="price=" + (action.filter.price/5) + "&";
+            }
+
+            if(action.filter.type !== undefined){
+                query+="type=" + action.filter.type + "&";
+            }
+
             return Object.assign(
                 {},
                 state,
