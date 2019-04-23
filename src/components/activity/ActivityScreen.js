@@ -68,7 +68,7 @@ class ActivityScreen extends Component {
 
     onSwipePerformed(action) {
         if(action === "left"){
-            this.props.fetchActivity();
+            this.props.fetchActivity(this.props.activity.query);
             this.setRandomColor();
         }
     }
@@ -85,7 +85,6 @@ class ActivityScreen extends Component {
 
     render(){
         const {view, activity, buttonContainer, filter} = styles;
-        console.log(this.props);
         return(
             <View style={{...view, ...{"backgroundColor": this.props.activity.color.backgroundColor}}}>
                 <View style={filter}>

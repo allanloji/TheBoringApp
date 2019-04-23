@@ -2,9 +2,12 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Slider from "@react-native-community/slider";
 
-function Price({color, input: { onChange, value }}) {
+function Price({lastValue, color, input: { onChange, value }}) {
     const {slider, labelContainer, label} = styles;
     const labelStyle= {...label, ...{"color": color}};
+    if(value === '' && lastValue !== value){
+        value = lastValue;
+    }
     return (
         <View>
             <View style={labelContainer}>
@@ -12,6 +15,7 @@ function Price({color, input: { onChange, value }}) {
                 <Text style={labelStyle}>{value}</Text>
             </View>
             <Slider
+                value={value}
                 style={slider}
                 minimumValue={0}
                 maximumValue={5}

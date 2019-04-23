@@ -2,20 +2,20 @@ import { connect } from 'react-redux';
 import ActivityScreen from '../components/activity/ActivityScreen';
 import {
     colorChange,
-    fetchActivity
+    fetchActivity,
 } from "../redux/modules/activity";
 
 function mapStateToProps(state) {
     return {
-        activity: state.activity // gives our component access to state through props.toDoApp
+        activity: state.activity,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         colorChange: (value) => dispatch(colorChange(value)),
-        fetchActivity: () => dispatch(fetchActivity())
-    }; // here we'll soon be mapping actions to props
+        fetchActivity: (query) => dispatch(fetchActivity(query)),
+    };
 }
 
 export default connect(

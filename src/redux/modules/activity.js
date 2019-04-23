@@ -1,8 +1,10 @@
 
 const COLOR_CHANGED = 'COLOR_CHANGED';
+const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
 const FETCH_ACTIVITY = "FETCH_ACTIVITY";
 const FETCH_ACTIVITY_FAILURE = "FETCH_ACTIVITY_FAILURE";
 const FETCH_ACTIVITY_SUCCESS = "FETCH_ACTIVITY_SUCCESS";
+
 
 const initialState = {
     activity:{
@@ -13,11 +15,12 @@ const initialState = {
         price: 0,
         key: "3943506",
     },
+    filter:{},
+    query:"",
     color: {
         backgroundColor: "#6FBCB7",
         color: "#C0ED8A",
     },
-    newActivity:{}
 }; //The initial state of this reducer (will be combined with the states of other reducers as your app grows)
 
 export function colorChange(newColor){
@@ -27,9 +30,10 @@ export function colorChange(newColor){
     }
 }
 
-export function fetchActivity(){
+export function fetchActivity(filters){
     return {
-        type: FETCH_ACTIVITY
+        type: FETCH_ACTIVITY,
+        filters
     }
 }
 
@@ -47,9 +51,18 @@ export function fetchActivityFailure(message){
     }
 }
 
+export function filterActivity(filter){
+    return {
+        type: FILTER_ACTIVITY,
+            filter
+    }
+}
 
 
-export default function reducer(state = initialState, action){ // a function that has two parameters, state (which is initialized as our initialState obj), and action, which we'll cover soon.
+
+
+
+export default function reducer(state = initialState, action){
     switch (action.type){
 
         case COLOR_CHANGED:
@@ -60,12 +73,25 @@ export default function reducer(state = initialState, action){ // a function tha
             );
 
         case FETCH_ACTIVITY_SUCCESS:
-            console.log("entra a payload");
             return Object.assign(
                 {},
                 state,
                 {activity: action.activity}
             );
+
+        case FILTER_ACTIVITY:
+            let query="";
+            //Range of API 0-1.0 0 being the most accesible
+            if(action.filter.accesibility !== undefined){
+                query+="accessibility=" + (-(action.filter.accesibility/10) + 1.0).toFixed(1)
+            }
+            return Object.assign(
+                {},
+                state,
+                {filter: action.filter, query: query}
+            );
+
+
 
         default:
             return state;

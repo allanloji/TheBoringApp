@@ -2,20 +2,25 @@ import React from 'react';
 import {Picker, StyleSheet, Text, View} from 'react-native';
 
 
-function Type({color, input: { onChange, value }}) {
+function Type({lastValue, color, input: { onChange, value }}) {
     const {picker, title} = styles;
     const item = { "color": color};
     const titleStyle= {...title, ...{"color": color}};
+    if(value === '' && lastValue !== value){
+        value = lastValue;
+    }
     return (
         <View>
             <Text style={titleStyle}>Type</Text>
             <Picker
+                value={value}
                 itemStyle={item}
                 selectedValue={value}
                 mode="dropdown"
                 style={picker}
                 onValueChange={onChange}
             >
+                <Picker.Item label="Random" value="random" />
                 <Picker.Item label="Education" value="education" />
                 <Picker.Item label="Recreational" value="recreational" />
                 <Picker.Item label="Social" value="social" />

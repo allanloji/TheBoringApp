@@ -1,18 +1,28 @@
 import React from 'react';
 import {StyleSheet, Platform, TextInput, Text, View} from 'react-native';
+import Slider from "@react-native-community/slider";
 
-function Participants({color, input: { onChange, ...restInput }}) {
-    const {textField, title} = styles;
-    const titleStyle= {...title, ...{"color": color}};
+function Participants({lastValue,color, input: { onChange, value }}) {
+    const { labelContainer,label, slider} = styles;
+    const labelStyle= {...label, ...{"color": color}};
+    if(value === '' && lastValue !== value){
+        value = lastValue;
+    }
     return (
         <View>
-            <Text style={titleStyle}>Participants</Text>
-            <TextInput
-                keyboardType={"numeric"}
-                onChangeText={onChange}
-                returnKeyType={(Platform.OS === 'ios') ? 'done' : 'next'}
-                {...restInput}
-                style={{...textField, ...{"color":color, "borderColor": color}}}
+            <View style={labelContainer}>
+                <Text style={labelStyle}>Participants</Text>
+                <Text style={labelStyle}>{value}</Text>
+            </View>
+            <Slider
+                value={value}
+                style={slider}
+                minimumValue={1}
+                maximumValue={5}
+                minimumTrackTintColor={color}
+                maximumTrackTintColor="#fff"
+                onValueChange={onChange}
+                step={1}
             />
         </View>
 
@@ -20,18 +30,18 @@ function Participants({color, input: { onChange, ...restInput }}) {
 }
 
 const styles = StyleSheet.create({
-    title: {
+    label: {
         fontSize: 20,
+        marginRight: 20,
+    },
+    labelContainer: {
+        flexDirection: "row",
+        alignItems: "center",
         marginBottom: 10,
         marginTop: 30,
     },
-    textField: {
-        borderColor: "#000",
-        borderRadius: 20,
-        borderWidth: 1,
-        height: 40,
-        justifyContent: "center",
-        paddingHorizontal: 20
+    slider: {
+        height: 40
     },
 });
 

@@ -5,14 +5,17 @@ import { Field, reduxForm } from 'redux-form'
 import {Accesibility, Participants, Price, Type} from "./common";
 
 
+
+
 class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {language:"", text: "", accesibility: 0, price: 0 };
-        this.submit = this.submit.bind(this);
     }
+
     submit(values){
-        console.log('submitting form', values);
+        this.props.filterActivity(values);
+        console.log('submitting form', values)
     }
 
     render(){
@@ -26,15 +29,19 @@ class Form extends Component {
                </View>
 
 
-               <Field name="accesibility" component={Accesibility} props={this.props.activity.color}/>
+               <Field name="accesibility"  component={Accesibility}
+                      props={{color: this.props.activity.color.color, lastValue:this.props.activity.filter.accesibility}} />
 
-               <Field name="participants" component={Participants} props={this.props.activity.color}/>
+               <Field name="participants" component={Participants}
+                      props={{color: this.props.activity.color.color, lastValue:this.props.activity.filter.participants}}/>
 
-               <Field name="price" component={Price} props={this.props.activity.color}/>
+               <Field name="price" component={Price}
+                      props={{color: this.props.activity.color.color, lastValue:this.props.activity.filter.price}}/>
 
-               <Field name="type" component={Type} props={this.props.activity.color}/>
+               <Field name="type" component={Type}
+                      props={{color: this.props.activity.color.color, lastValue:this.props.activity.filter.type}}/>
 
-               <Button color={this.props.activity.color.color} onPress={this.props.handleSubmit(this.submit)}>Filter</Button>
+               <Button color={this.props.activity.color.color} onPress={this.props.handleSubmit((values) => this.submit(values))}>Filter</Button>
            </View>
 
 
@@ -70,5 +77,5 @@ const styles = StyleSheet.create({
 });
 
 export default reduxForm({
-    form: "filter"
+    form: "filter",
 })(Form)

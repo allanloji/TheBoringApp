@@ -4,15 +4,6 @@ import {Accesibility, Participants, Price, Type} from "./common";
 import {BackButton} from "../../common";
 
 
-const detail = {
-    activity: "Learn Express.js",
-    accessibility: 0.25,
-    type: "education",
-    participants: 1,
-    price: 0.1,
-    link: "https://expressjs.com/",
-    key: "3943506"
-};
 
 class ActivityDetail extends Component{
     constructor(props) {
