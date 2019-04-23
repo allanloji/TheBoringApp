@@ -32,7 +32,6 @@ class Form extends Component {
                    <SmallButton color={this.props.activity.color.color} onPress={this.eraseFilters}>No Filters</SmallButton>
                </View>
 
-
                <Field name="accesibility"  component={Accesibility}
                       props={{color: this.props.activity.color.color, lastValue:this.props.activity.filter.accesibility}} />
 

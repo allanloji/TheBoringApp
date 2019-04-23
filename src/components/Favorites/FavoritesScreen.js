@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {StyleSheet, FlatList, Text, View,} from 'react-native';
-import {Button, NavBar, SmallButton} from "../common";
+import {NavBar} from "../common";
 import PropTypes from "prop-types";
 import {Favorite} from "./common";
 
@@ -48,7 +48,6 @@ class FavoritesScreen extends Component {
     }
 
 
-
     render(){
         const {view} = styles;
         const viewStyle = {...view, ...{"backgroundColor": this.props.activity.color.backgroundColor}};
@@ -87,11 +86,27 @@ const styles = StyleSheet.create({
 });
 
 FavoritesScreen.propTypes = {
-
+    activity: PropTypes.object,
+    favorites: PropTypes.arrayOf(PropTypes.object),
+    deleteFavorite: PropTypes.func
 };
 
 FavoritesScreen.defaultProps = {
-
+    activity: {
+        activity:{
+            activity: "Swipe Left to get an Activity.",
+            accessibility: 0,
+            type: "education",
+            participants: 1,
+            price: 0,
+        },
+        color: {
+            backgroundColor: "#6FBCB7",
+            color: "#C0ED8A",
+        },
+    },
+    favorites: [],
+    deleteFavorite: () => console.log("deleteFavorite")
 
 };
 

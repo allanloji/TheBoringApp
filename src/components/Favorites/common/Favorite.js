@@ -53,11 +53,15 @@ const styles = StyleSheet.create({
 });
 
 Favorite.propTypes = {
-
+    onPress: PropTypes.func,
+    color: PropTypes.string,
+    activity: PropTypes.object
 };
 
 Favorite.defaultProps = {
-
+    onPress: () => console.log("onPress"),
+    color: "#000",
+    activity: {}
 };
 
 export { Favorite };
