@@ -82,13 +82,15 @@ class ActivityScreen extends Component {
 
     render(){
         const {view, activity, buttonContainer, filter} = styles;
+        const viewStyle = {...view, ...{"backgroundColor": this.props.activity.color.backgroundColor}};
+        const activityStyle = {...activity, ...{"color": this.props.activity.color.color}};
         return(
-            <View style={{...view, ...{"backgroundColor": this.props.activity.color.backgroundColor}}}>
+            <View style={viewStyle}>
                 <View style={filter}>
                     <SmallButton onPress={this.onFilterPressed} color={this.props.activity.color.color}>Filter</SmallButton>
                 </View>
                 <SwipeGesture gestureStyle={view} onSwipePerformed={this.onSwipePerformed}>
-                    <Text style={{...activity, ...{"color": this.props.activity.color.color}}}>
+                    <Text style={activityStyle}>
                         {this.props.activity.activity.activity}
                     </Text>
                     <View style={buttonContainer}>

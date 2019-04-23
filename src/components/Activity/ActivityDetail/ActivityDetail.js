@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import {Accesibility, Participants, Price, Type} from "./common";
-import {BackButton} from "../../common";
+import {BackButton, SmallButton} from "../../common";
 import PropTypes from "prop-types";
 
 
@@ -9,15 +9,24 @@ import PropTypes from "prop-types";
 class ActivityDetail extends Component{
     constructor(props) {
         super(props);
+        this.addFavorite = this.addFavorite.bind(this);
+    }
+
+    addFavorite(){
+        this.props.addFavorite(this.props.activity.activity);
     }
 
     render(){
-        const {view, container, activity, priceContainer, infoContainer} = styles;
+        const {view, container, activity, priceContainer, infoContainer, favorite} = styles;
         const viewStyle = {...view,...{"backgroundColor":this.props.activity.color.backgroundColor}};
         const activityStyle = {...activity, ...{"color":this.props.activity.color.color}};
+        console.log(this.props);
         return(
             <View style={viewStyle}>
                 <BackButton color={this.props.activity.color.color} />
+                <View style={favorite}>
+                    <SmallButton color={this.props.activity.color.color} onPress={this.addFavorite}>Add Fav</SmallButton>
+                </View>
                 <View style={container}>
                     <Text style={activityStyle}>
                         {this.props.activity.activity.activity}
@@ -61,7 +70,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         marginTop: 30
-    }
+    },
+    favorite: {
+        position: "absolute",
+        right: 20,
+        top: 50,
+    },
 });
 
 ActivityDetail.propTypes = {

@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
 import ActivityDetail from "../components/Activity/ActivityDetail/ActivityDetail";
+import { addFavorite} from "../redux/modules/favorites";
+
+
 
 function mapStateToProps(state) {
     return {
@@ -7,6 +10,14 @@ function mapStateToProps(state) {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        addFavorite: (activity) => dispatch(addFavorite(activity)),
+
+    };
+}
+
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(ActivityDetail);

@@ -9,7 +9,7 @@ function NavBar() {
             <Link to="/" underlayColor="#f0f4f7" style={navItem}>
                 <Text>Activity</Text>
             </Link>
-            <Link to="/details" underlayColor="#f0f4f7" style={navItem}>
+            <Link to="/favorites" underlayColor="#f0f4f7" style={navItem}>
                 <Text>Favorites</Text>
             </Link>
         </View>

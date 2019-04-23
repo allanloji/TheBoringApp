@@ -4,12 +4,14 @@ import activity from "./modules/activity";
 import { reducer as formReducer } from 'redux-form';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import {fetchActivityEpic} from "../epics/activityEpic";
+import favorites from "./modules/favorites";
 
 const loggerMiddleware = createLogger();
 const epicMiddleware = createEpicMiddleware();
 
 const reducer = combineReducers({
     activity,
+    favorites,
     form: formReducer
 });
 
