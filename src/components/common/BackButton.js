@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import {Link} from "react-router-native";
+import PropTypes from "prop-types";
 
 function BackButton({color}) {
     const {container, buttonContainer, arrow} = styles;
@@ -30,5 +31,13 @@ const styles = StyleSheet.create({
         fontSize: 40,
     }
 });
+
+BackButton.propTypes = {
+    color: PropTypes.string
+};
+
+BackButton.defaultProps = {
+    color: "#000",
+};
 
 export { BackButton };

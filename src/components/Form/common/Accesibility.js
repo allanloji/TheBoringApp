@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Slider from "@react-native-community/slider";
+import PropTypes from "prop-types";
+
 
 function Accesibility({lastValue, color, input: { onChange, value }}) {
     const {slider, label, labelContainer} = styles;
@@ -44,5 +46,18 @@ const styles = StyleSheet.create({
         marginRight: 20,
     },
 });
+
+Accesibility.propTypes = {
+    lastValue: PropTypes.number,
+    color: PropTypes.string,
+    input: PropTypes.object
+};
+
+Accesibility.defaultProps = {
+    lastValue: 0,
+    color: "#000",
+    input: {}
+};
+
 
 export {Accesibility};

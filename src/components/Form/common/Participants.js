@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Slider from "@react-native-community/slider";
+import PropTypes from "prop-types";
 
 function Participants({lastValue,color, input: { onChange, value }}) {
     const { labelContainer,label, slider} = styles;
@@ -44,5 +45,17 @@ const styles = StyleSheet.create({
         height: 40
     },
 });
+
+Participants.propTypes = {
+    lastValue: PropTypes.number,
+    color: PropTypes.string,
+    input: PropTypes.object
+};
+
+Participants.defaultProps = {
+    lastValue: 0,
+    color: "#000",
+    input: {}
+};
 
 export {Participants};

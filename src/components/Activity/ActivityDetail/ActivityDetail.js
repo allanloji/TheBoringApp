@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import {Accesibility, Participants, Price, Type} from "./common";
 import {BackButton} from "../../common";
+import PropTypes from "prop-types";
 
 
 
@@ -21,11 +22,15 @@ class ActivityDetail extends Component{
                     <Text style={activityStyle}>
                         {this.props.activity.activity.activity}
                     </Text>
-                    <View style={priceContainer}><Price price={this.props.activity.activity.price} color={this.props.activity.color.color}/></View>
+                    <View style={priceContainer}><
+                        Price price={this.props.activity.activity.price} color={this.props.activity.color.color}/>
+                    </View>
                     <View style={infoContainer}>
-                        <Accesibility accesibility={this.props.activity.activity.accessibility} color={this.props.activity.color.color}/>
+                        <Accesibility accesibility={this.props.activity.activity.accessibility}
+                                      color={this.props.activity.color.color}/>
                         <Type type={this.props.activity.activity.type} color={this.props.activity.color.color}/>
-                        <Participants participants={this.props.activity.activity.participants} color={this.props.activity.color.color}/>
+                        <Participants participants={this.props.activity.activity.participants}
+                                      color={this.props.activity.color.color}/>
                     </View>
                 </View>
             </View>
@@ -58,5 +63,25 @@ const styles = StyleSheet.create({
         marginTop: 30
     }
 });
+
+ActivityDetail.propTypes = {
+    activity: PropTypes.object,
+};
+
+ActivityDetail.defaultProps = {
+    activity: {
+        activity:{
+            activity: "Swipe Left to get an Activity.",
+            accessibility: 0,
+            type: "education",
+            participants: 1,
+            price: 0,
+        },
+        color: {
+            backgroundColor: "#6FBCB7",
+            color: "#C0ED8A",
+        },
+    },
+};
 
 export default ActivityDetail;

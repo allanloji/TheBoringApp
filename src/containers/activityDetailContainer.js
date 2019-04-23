@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ActivityDetail from "../components/activity/ActivityDetail/ActivityDetail";
+import ActivityDetail from "../components/Activity/ActivityDetail/ActivityDetail";
 
 function mapStateToProps(state) {
     return {

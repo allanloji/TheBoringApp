@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ActivityScreen from '../components/activity/ActivityScreen';
+import ActivityScreen from '../components/Activity/ActivityScreen';
 import {
     colorChange,
     fetchActivity,

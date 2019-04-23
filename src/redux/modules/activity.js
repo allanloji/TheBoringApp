@@ -1,19 +1,19 @@
 const COLOR_CHANGED = 'COLOR_CHANGED';
 const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
-const FETCH_ACTIVITY = "FETCH_ACTIVITY";
 const FETCH_ACTIVITY_FAILURE = "FETCH_ACTIVITY_FAILURE";
 const FETCH_ACTIVITY_SUCCESS = "FETCH_ACTIVITY_SUCCESS";
 const RANDOM_ACTIVITY = "RANDOM_ACTIVITY";
 
+export const FETCH_ACTIVITY = "FETCH_ACTIVITY";
+
 
 const initialState = {
     activity:{
-        activity: "Swipe Left to get an activity.",
+        activity: "Swipe Left to get an Activity.",
         accessibility: 0,
         type: "education",
         participants: 1,
         price: 0,
-        key: "3943506",
     },
     filter:{},
     query:"",

@@ -1,5 +1,7 @@
 import React from 'react';
 import {Picker, StyleSheet, Text, View} from 'react-native';
+import PropTypes from "prop-types";
+import {Accesibility} from "./Accesibility";
 
 
 function Type({lastValue, color, input: { onChange, value }}) {
@@ -47,5 +49,17 @@ const styles = StyleSheet.create({
         width: 150
     },
 });
+
+Type.propTypes = {
+    lastValue: PropTypes.string,
+    color: PropTypes.string,
+    input: PropTypes.object
+};
+
+Type.defaultProps = {
+    lastValue: "Education",
+    color: "#000",
+    input: {}
+};
 
 export {Type};

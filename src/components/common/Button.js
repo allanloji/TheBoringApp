@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity, StyleSheet} from 'react-native';
+import PropTypes from "prop-types";
 
 function Button({onPress, color, children}) {
     const {container, text} = styles;
@@ -27,5 +28,17 @@ const styles = StyleSheet.create({
         fontSize: 15,
     }
 });
+
+Button.propTypes = {
+    onPress: PropTypes.func,
+    color: PropTypes.string,
+    children: PropTypes.string
+};
+
+Button.defaultProps = {
+    onPress: () => console.log("onPress"),
+    color: "#000",
+    children: ""
+};
 
 export { Button };

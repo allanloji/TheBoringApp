@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
+import PropTypes from "prop-types";
 
 function Price({price, color}) {
     return (
@@ -50,5 +51,15 @@ const styles = StyleSheet.create({
         letterSpacing: 10,
     }
 });
+
+Price.propTypes = {
+    price: PropTypes.number,
+    color: PropTypes.string
+};
+
+Price.defaultProps = {
+    price: 1,
+    color: "#000",
+};
 
 export { Price };

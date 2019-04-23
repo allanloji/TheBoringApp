@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, TextInput, View, Picker, Platform} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {BackButton, Button, SmallButton} from "../common";
 import { Field, reduxForm } from 'redux-form'
 import {Accesibility, Participants, Price, Type} from "./common";
+import PropTypes from "prop-types";
 
 
 class Form extends Component {
@@ -23,8 +24,7 @@ class Form extends Component {
     }
 
     render(){
-        const {view, random, labelContainer, label, picker, title} = styles;
-        console.log(this.props);
+        const {view, random} = styles;
         return(
             <View style={{...view,...{"backgroundColor":this.props.activity.color.backgroundColor}}}>
                <BackButton color={this.props.activity.color.color}/>
@@ -64,20 +64,37 @@ const styles = StyleSheet.create({
         position: "absolute",
         right: 20,
         top: 50,
-
-
-    },
-    labelContainer: {
-        alignItems: "center",
-        flexDirection: "row",
-        marginBottom: 10,
-        marginTop: 30,
-    },
-    label: {
-        fontSize: 20,
-        marginRight: 20,
     },
 });
+
+Form.propTypes = {
+    activity: PropTypes.object,
+    handleSubmit: PropTypes.func,
+    randomActivity: PropTypes.func,
+    filterActivity: PropTypes.func,
+    history: PropTypes.object,
+};
+
+Form.defaultProps = {
+    activity: {
+        activity:{
+            activity: "Swipe Left to get an Activity.",
+            accessibility: 0,
+            type: "education",
+            participants: 1,
+            price: 0,
+        },
+        color: {
+            backgroundColor: "#6FBCB7",
+            color: "#C0ED8A",
+        },
+        filter:{},
+    },
+    handleSubmit: () => console.log("handleSumbit"),
+    randomActivity: () => console.log("randomActivity"),
+    filterActivity: () => console.log("filterActivity"),
+    history: {}
+};
 
 export default reduxForm({
     form: "filter",

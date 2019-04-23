@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, Text, View,} from 'react-native';
 import SwipeGesture from '../../../scripts/swipe-gesture';
 import {Button, NavBar, SmallButton} from "../common";
+import PropTypes from "prop-types";
 
 const colors = [
     {
@@ -120,8 +121,34 @@ const styles = StyleSheet.create({
         top: 50,
         zIndex: 2
     }
-
-
 });
+
+ActivityScreen.propTypes = {
+    activity: PropTypes.object,
+    fetchActivity: PropTypes.func,
+    colorChange: PropTypes.func,
+    history: PropTypes.object,
+};
+
+ActivityScreen.defaultProps = {
+    activity: {
+        activity:{
+            activity: "Swipe Left to get an Activity.",
+            accessibility: 0,
+            type: "education",
+            participants: 1,
+            price: 0,
+        },
+        color: {
+            backgroundColor: "#6FBCB7",
+            color: "#C0ED8A",
+        },
+    },
+    fetchActivity:()=> console.log("fetchActivity"),
+    colorChange: ()=> console.log("colorChange") ,
+    history: {}
+
+};
+
 
 export default ActivityScreen;
