@@ -80,6 +80,21 @@ export default function reducer(state = initialState, action){
             );
 
         case FETCH_ACTIVITY_SUCCESS:
+            let emptyActivity = {
+                    activity: "No activities with this parameters",
+                    accessibility: 0,
+                    type: "education",
+                    participants: 1,
+                    price: 0,
+                    key: "3943506",
+                };
+            if(action.activity.activity === undefined){
+                return Object.assign(
+                    {},
+                    state,
+                    {activity: emptyActivity}
+                );
+            }
             return Object.assign(
                 {},
                 state,

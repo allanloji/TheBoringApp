@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         textAlignVertical: "center",
     },
     buttonContainer: {
-        top: 150
+        top: 100
     },
     filter: {
         position: "absolute",
