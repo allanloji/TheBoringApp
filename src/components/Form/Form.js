@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, TextInput, View, Picker, Platform} from 'react-native';
-import Slider from '@react-native-community/slider';
 import {BackButton, Button, SmallButton} from "../common";
 import { Field, reduxForm } from 'redux-form'
 import {Accesibility, Participants, Price, Type} from "./common";

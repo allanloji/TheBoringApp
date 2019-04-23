@@ -11,7 +11,7 @@ import {StyleSheet, Text} from 'react-native';
 import { NativeRouter, Route } from "react-router-native";
 import { Provider } from 'react-redux';
 import activityContainer from './src/containers/activityContainer';
-import configureStore from './src/redux/configureStore';
+import store from './src/redux/configureStore';
 import activityDetailContainer from "./src/containers/activityDetailContainer";
 import formContainer from "./src/containers/formContainer";
 
@@ -22,7 +22,6 @@ import formContainer from "./src/containers/formContainer";
 const About = () => <Text style={styles.header}>About</Text>;
 
 
-const store = configureStore();
 
 
 export default class App extends Component{

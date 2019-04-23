@@ -68,7 +68,8 @@ class ActivityScreen extends Component {
 
     onSwipePerformed(action) {
         if(action === "left"){
-            this.setRandomColor();
+            this.props.fetchActivity();
+            //this.setRandomColor();
         }
     }
 

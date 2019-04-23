@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import ActivityScreen from '../components/activity/ActivityScreen';
 import {
-    colorChange
+    colorChange,
+    fetchActivity
 } from "../redux/modules/activity";
 
 function mapStateToProps(state) {
@@ -12,7 +13,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        colorChange: (value) => dispatch(colorChange(value))
+        colorChange: (value) => dispatch(colorChange(value)),
+        fetchActivity: () => dispatch(fetchActivity())
     }; // here we'll soon be mapping actions to props
 }
 
